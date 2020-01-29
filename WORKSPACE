@@ -3,6 +3,7 @@ workspace(name = "tf_networking")
 load("//third_party/tensorflow:tf_configure.bzl", "tf_configure")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 tf_configure(
     name = "local_config_tf",
@@ -30,3 +31,114 @@ maybe(
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
+
+maybe(
+    git_repository,
+    name = "com_github_nelhage_rules_boost",
+    commit = "9f9fb8b2f0213989247c9d5c0e814a8451d18d7f",
+    remote = "https://github.com/nelhage/rules_boost",
+    shallow_since = "1570056263 -0700",
+)
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+boost_deps()
+
+maybe(
+    http_archive,
+    name = "fmtlib",
+    build_file = "//third_party:fmtlib.BUILD",
+    sha256 = "3c812a18e9f72a88631ab4732a97ce9ef5bcbefb3235e9fd465f059ba204359b",
+    strip_prefix = "fmt-5.2.1",
+    urls = [
+        "https://github.com/fmtlib/fmt/archive/5.2.1.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "cares",
+    build_file = "//third_party/cares:cares.BUILD",
+    sha256 = "03f708f1b14a26ab26c38abd51137640cb444d3ec72380b21b20f1a8d2861da7",
+    strip_prefix = "c-ares-1.13.0",
+    urls = [
+        "https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "yaml-cpp",
+    build_file = "//third_party:yaml-cpp.BUILD",
+    sha256 = "77ea1b90b3718aa0c324207cb29418f5bced2354c2e483a9523d98c3460af1ed",
+    strip_prefix = "yaml-cpp-yaml-cpp-0.6.3",
+    urls = [
+        "https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.6.3.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "ragel",
+    build_file = "//third_party:ragel.BUILD",
+    sha256 = "5f156edb65d20b856d638dd9ee2dfb43285914d9aa2b6ec779dac0270cd56c3f",
+    strip_prefix = "ragel-6.10",
+    urls = [
+        "http://www.colm.net/files/ragel/ragel-6.10.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "cryptopp",
+    build_file = "//third_party:cryptopp.BUILD",
+    sha256 = "e3bcd48a62739ad179ad8064b523346abb53767bcbefc01fe37303412292343e",
+    strip_prefix = "cryptopp-CRYPTOPP_8_2_0",
+    urls = [
+        "https://github.com/weidai11/cryptopp/archive/CRYPTOPP_8_2_0.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "lz4",
+    build_file = "//third_party:lz4.BUILD",
+    sha256 = "658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc",
+    strip_prefix = "lz4-1.9.2",
+    urls = [
+        "https://github.com/lz4/lz4/archive/v1.9.2.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "seastar",
+    build_file = "//third_party:seastar.BUILD",
+    sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",
+    strip_prefix = "seastar-seastar-19.06.0",
+    urls = [
+        "https://github.com/scylladb/seastar/archive/seastar-19.06.0.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "concurrentqueue",
+    build_file = "//third_party:concurrentqueue.BUILD",
+    sha256 = "d723e784e4d54f7519208bd795f2aa799a449b873dbb7a1251f288e04be23465",
+    strip_prefix = "concurrentqueue-1.0.0-beta",
+    urls = [
+        "https://github.com/cameron314/concurrentqueue/archive/v1.0.0-beta.tar.gz",
+    ],
+)
+
+maybe(
+    http_archive,
+    name = "readerwriterqueue",
+    build_file = "//third_party:readerwriterqueue.BUILD",
+    sha256 = "67a761278457ab1f113086449c1938e501f272be7f0fd50be28887c1274fe580",
+    strip_prefix = "readerwriterqueue-1.0.1",
+    urls = [
+        "https://github.com/cameron314/readerwriterqueue/archive/v1.0.1.tar.gz",
+    ],
+)
