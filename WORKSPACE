@@ -33,11 +33,11 @@ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 protobuf_deps()
 
 maybe(
-    git_repository,
+    http_archive,
     name = "com_github_nelhage_rules_boost",
-    commit = "9f9fb8b2f0213989247c9d5c0e814a8451d18d7f",
-    remote = "https://github.com/nelhage/rules_boost",
-    shallow_since = "1570056263 -0700",
+    sha256 = "f8c9653c1c49489c04f9f87ab1ee93d7b59bb26a39d9e30e9687fca3c6197c3f",
+    strip_prefix = "rules_boost-9f9fb8b2f0213989247c9d5c0e814a8451d18d7f",
+    urls = ["https://github.com/nelhage/rules_boost/archive/9f9fb8b2f0213989247c9d5c0e814a8451d18d7f.tar.gz"],
 )
 
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
