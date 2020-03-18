@@ -121,6 +121,15 @@ maybe(
 
 maybe(
     http_archive,
+    name = "gnutls",
+    build_file = "//third_party:gnutls.BUILD",
+    sha256 = "bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b",
+    strip_prefix = "gnutls-3.6.12",
+    urls = ["https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz"],
+)
+
+maybe(
+    http_archive,
     name = "seastar",
     build_file = "//third_party:seastar.BUILD",
     sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",

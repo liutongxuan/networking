@@ -47,7 +47,6 @@ cc_library(
     strip_include_prefix = "include",
     deps = [
         ":metrics2_cc_proto",
-        "//third_party/gnutls",
         "//third_party/sdt",
         "//third_party/xfs",
         "@boost//:asio",
@@ -61,6 +60,7 @@ cc_library(
         "@cares",
         "@cryptopp",
         "@fmtlib",
+        "@gnutls",
         "@lz4",
         "@org_lzma_lzma//:lzma",
         "@sctp",
