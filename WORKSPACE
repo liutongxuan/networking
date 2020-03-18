@@ -112,6 +112,15 @@ maybe(
 
 maybe(
     http_archive,
+    name = "sctp",
+    build_file = "//third_party:sctp.BUILD",
+    sha256 = "3e9ab5b3844a8b65fc8152633aafe85f406e6da463e53921583dfc4a443ff03a",
+    strip_prefix = "lksctp-tools-1.0.18",
+    urls = ["https://github.com/sctp/lksctp-tools/archive/v1.0.18.tar.gz"],
+)
+
+maybe(
+    http_archive,
     name = "seastar",
     build_file = "//third_party:seastar.BUILD",
     sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",

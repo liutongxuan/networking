@@ -48,7 +48,6 @@ cc_library(
     deps = [
         ":metrics2_cc_proto",
         "//third_party/gnutls",
-        "//third_party/sctp",
         "//third_party/sdt",
         "//third_party/xfs",
         "@boost//:asio",
@@ -64,6 +63,7 @@ cc_library(
         "@fmtlib",
         "@lz4",
         "@org_lzma_lzma//:lzma",
+        "@sctp",
         "@yaml-cpp",
     ],
 )
