@@ -170,10 +170,10 @@ maybe(
     http_archive,
     name = "concurrentqueue",
     build_file = "//third_party:concurrentqueue.BUILD",
-    sha256 = "d723e784e4d54f7519208bd795f2aa799a449b873dbb7a1251f288e04be23465",
-    strip_prefix = "concurrentqueue-1.0.0-beta",
+    sha256 = "7e715c793001e01851448320e8a416b80342b2e75db46d4c978e990a506060e6",
+    strip_prefix = "concurrentqueue-1.0.1",
     urls = [
-        "https://github.com/cameron314/concurrentqueue/archive/v1.0.0-beta.tar.gz",
+        "https://github.com/cameron314/concurrentqueue/archive/v1.0.1.tar.gz",
     ],
 )
 
