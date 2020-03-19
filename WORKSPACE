@@ -139,6 +139,24 @@ maybe(
 
 maybe(
     http_archive,
+    name = "uuid",
+    build_file = "//third_party:uuid.BUILD",
+    sha256 = "37ac05d82c6410d89bc05d43cee101fefc8fe6cf6090b3ce7a1409a6f35db606",
+    strip_prefix = "util-linux-2.35.1",
+    urls = ["https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.gz"],
+)
+
+maybe(
+    http_archive,
+    name = "xfs",
+    build_file = "//third_party:xfs.BUILD",
+    sha256 = "cfbb0b136799c48cb79435facd0969c5a60a587a458e2d16f9752771027efbec",
+    strip_prefix = "xfsprogs-5.5.0",
+    urls = ["https://mirrors.edge.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-5.5.0.tar.xz"],
+)
+
+maybe(
+    http_archive,
     name = "seastar",
     build_file = "//third_party:seastar.BUILD",
     sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",
