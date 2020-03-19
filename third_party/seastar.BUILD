@@ -47,7 +47,6 @@ cc_library(
     strip_include_prefix = "include",
     deps = [
         ":metrics2_cc_proto",
-        "//third_party/sdt",
         "//third_party/xfs",
         "@boost//:asio",
         "@boost//:filesystem",
@@ -64,6 +63,7 @@ cc_library(
         "@lz4",
         "@org_lzma_lzma//:lzma",
         "@sctp",
+        "@systemtap-sdt",
         "@yaml-cpp",
     ],
 )

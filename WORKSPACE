@@ -130,6 +130,15 @@ maybe(
 
 maybe(
     http_archive,
+    name = "systemtap-sdt",
+    build_file = "//third_party:systemtap-sdt.BUILD",
+    sha256 = "0984ebe3162274988252ec35074021dc1e8420d87a8b35f437578562fce08781",
+    strip_prefix = "systemtap-4.2",
+    urls = ["https://sourceware.org/systemtap/ftp/releases/systemtap-4.2.tar.gz"],
+)
+
+maybe(
+    http_archive,
     name = "seastar",
     build_file = "//third_party:seastar.BUILD",
     sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",
