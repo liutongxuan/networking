@@ -4,11 +4,11 @@
 #include <string>
 #include <thread>
 
-#include "tensorflow_networking/seastar/channel.hh"
 #include "tensorflow_networking/seastar/seastar_client.h"
 #include "tensorflow_networking/seastar/seastar_tag_factory.h"
 #include "tensorflow_networking/seastar/seastar_worker_service.h"
 
+#include "seastar/core/channel.hh"
 #include "seastar/core/app-template.hh"
 #include "seastar/core/distributed.hh"
 

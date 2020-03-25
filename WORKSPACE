@@ -1,6 +1,7 @@
 workspace(name = "tf_networking")
 
 load("//third_party/tensorflow:tf_configure.bzl", "tf_configure")
+load("//tensorflow_networking:repo.bzl", "tensorflow_http_archive")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
@@ -125,7 +126,7 @@ maybe(
     build_file = "//third_party:gnutls.BUILD",
     sha256 = "bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b",
     strip_prefix = "gnutls-3.6.12",
-    urls = ["https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz"],
+    urls = ["https://mirrors.aliyun.com/macports/distfiles/gnutls/gnutls-3.6.12.tar.xz"],
 )
 
 maybe(
@@ -156,24 +157,14 @@ maybe(
 )
 
 maybe(
-    http_archive,
+    tensorflow_http_archive,
     name = "seastar",
     build_file = "//third_party:seastar.BUILD",
+    patch_file = "//third_party:seastar.patch",
     sha256 = "27f1d42e77acfb8bcccd102e417fdaa81b3c8d589a8e7b009dd3312dcf6fbeef",
     strip_prefix = "seastar-seastar-19.06.0",
     urls = [
         "https://github.com/scylladb/seastar/archive/seastar-19.06.0.tar.gz",
-    ],
-)
-
-maybe(
-    http_archive,
-    name = "concurrentqueue",
-    build_file = "//third_party:concurrentqueue.BUILD",
-    sha256 = "7e715c793001e01851448320e8a416b80342b2e75db46d4c978e990a506060e6",
-    strip_prefix = "concurrentqueue-1.0.1",
-    urls = [
-        "https://github.com/cameron314/concurrentqueue/archive/v1.0.1.tar.gz",
     ],
 )
 

@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "tensorflow_networking/seastar/channel.hh"
+#include "seastar/core/channel.hh"
 #include "tensorflow_networking/seastar/seastar_engine.h"
 
 #include "tensorflow/core/lib/core/status.h"

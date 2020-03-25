@@ -1,7 +1,7 @@
 #ifndef TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_REMOTE_WORKER_H_
 #define TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_REMOTE_WORKER_H_
 
-#include "tensorflow_networking/seastar/channel.hh"
+#include "seastar/core/channel.hh"
 
 #include "tensorflow/core/distributed_runtime/worker_cache_logger.h"
 #include "tensorflow/core/distributed_runtime/worker_env.h"

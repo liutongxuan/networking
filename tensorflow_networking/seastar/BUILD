@@ -1,9 +1,4 @@
-package(
-    default_visibility = [
-        "//tensorflow:__subpackages__",
-    ],
-    licenses = ["notice"],  # Apache 2.0
-)
+package(default_visibility = ["//visibility:public"])
 
 exports_files(["LICENSE"])
 
@@ -21,27 +16,6 @@ COMMON_COPTS = [
     "-DNO_EXCEPTION_INTERCEPT",
     "-DHAVE_LZ4_COMPRESS_DEFAULT",
 ]
-
-cc_library(
-    name = "packet_queue",
-    srcs = ["packet_queue.cc"],
-    hdrs = ["packet_queue.hh"],
-    deps = [
-        "@concurrentqueue",
-        "@readerwriterqueue",
-        "@seastar",
-    ],
-)
-
-cc_library(
-    name = "channel",
-    srcs = ["channel.cc"],
-    hdrs = ["channel.hh"],
-    deps = [
-        ":packet_queue",
-        "@seastar",
-    ],
-)
 
 cc_library(
     name = "seastar_tensor_coding",
@@ -77,7 +51,6 @@ cc_library(
     copts = COMMON_COPTS,
     linkstatic = 1,
     deps = [
-        ":channel",
         ":seastar_tensor_coding",
         "@local_config_tf//:tf_header_lib",
         "@seastar",
@@ -109,7 +82,6 @@ cc_library(
     copts = COMMON_COPTS,
     linkstatic = 1,
     deps = [
-        ":channel",
         ":seastar_cpuset",
         ":seastar_worker_service",
     ],
@@ -123,7 +95,6 @@ cc_library(
     copts = COMMON_COPTS,
     linkstatic = 1,
     deps = [
-        ":channel",
         ":seastar_worker_service",
         "@local_config_tf//:tf_header_lib",
     ],
@@ -143,7 +114,6 @@ cc_library(
     copts = COMMON_COPTS,
     linkstatic = 1,
     deps = [
-        ":channel",
         ":seastar_engine",
         ":seastar_remote_worker",
         "@local_config_tf//:tf_header_lib",

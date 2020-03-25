@@ -58,7 +58,7 @@ class CachingSeastarChannelCache : public SeastarChannelCache {
 
  private:
   mutex mu_;
-  std::unordered_map<string, seastar::channel*> channels_ GUARDED_BY(mu_);
+  std::unordered_map<string, seastar::channel*> channels_ TF_GUARDED_BY(mu_);
 };
 
 class MultiSeastarChannelCache : public CachingSeastarChannelCache {
@@ -121,7 +121,7 @@ class MultiSeastarChannelCache : public CachingSeastarChannelCache {
   const std::vector<SeastarChannelCache*> caches_;
   mutex mu_;
   std::unordered_map<string, SeastarChannelCache*> target_caches_
-      GUARDED_BY(mu_);
+      TF_GUARDED_BY(mu_);
 };
 
 class SparseSeastarChannelCache : public CachingSeastarChannelCache {

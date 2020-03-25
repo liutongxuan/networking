@@ -26,7 +26,7 @@ class SeastarRemoteWorker : public WorkerInterface,
   ~SeastarRemoteWorker() override {}
 
   void GetStatusAsync(const GetStatusRequest* request,
-                      GetStatusResponse* response,
+                      GetStatusResponse* response, bool fail_fast,
                       StatusCallback done) override {
     GetStatusAsyncWithOptions(request, response, done, nullptr);
   }

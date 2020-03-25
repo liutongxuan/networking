@@ -1,7 +1,7 @@
 #ifndef TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_TAG_FACTORY_H_
 #define TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_TAG_FACTORY_H_
 
-#include "tensorflow_networking/seastar/channel.hh"
+#include "seastar/core/channel.hh"
 #include "tensorflow_networking/seastar/seastar_client_tag.h"
 #include "tensorflow_networking/seastar/seastar_server_tag.h"
 #include "tensorflow_networking/seastar/seastar_worker_service.h"

@@ -1,9 +1,9 @@
 #ifndef TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_CLIENT_H_
 #define TENSORFLOW_CONTRIB_SEASTAR_SEASTAR_CLIENT_H_
 
-#include "tensorflow_networking/seastar/channel.hh"
 #include "tensorflow_networking/seastar/seastar_tag_factory.h"
 
+#include "seastar/core/channel.hh"
 #include "seastar/core/future-util.hh"
 #include "seastar/net/api.hh"
 

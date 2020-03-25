@@ -14,6 +14,7 @@
 #include "tensorflow/core/lib/strings/str_util.h"
 #include "tensorflow/core/platform/logging.h"
 #include "tensorflow/core/platform/macros.h"
+#include "tensorflow/core/platform/thread_annotations.h"
 #include "tensorflow/core/platform/types.h"
 
 namespace tensorflow {
@@ -137,7 +138,7 @@ class SeastarRecvTensorCall : public BaseRecvTensorCall {
   Rendezvous::DoneCallback done_;
 
   mutable mutex mu_;
-  Status status_ GUARDED_BY(mu_);
+  Status status_ TF_GUARDED_BY(mu_);
 
   TF_DISALLOW_COPY_AND_ASSIGN(SeastarRecvTensorCall);
 };
@@ -178,7 +179,7 @@ class SeastarRecvTensorFreeList {
   static const int kMaxObjects = 1000;
 
   mutex mu_;
-  std::vector<SeastarRecvTensorCall*> objects_ GUARDED_BY(mu_);
+  std::vector<SeastarRecvTensorCall*> objects_ TF_GUARDED_BY(mu_);
 };
 
 static SeastarRecvTensorFreeList* get_call_freelist() {
@@ -217,7 +218,7 @@ void SeastarRemoteRendezvous::RecvFromRemoteAsync(
     if (rwi != nullptr) {
       sess->worker_cache()->ReleaseWorker(call->src_worker_, rwi);
     }
-    get_call_freelist()->Release(call, sess->worker_cache().get());
+    get_call_freelist()->Release(call, sess->worker_cache());
     done(s, Args(), recv_args, Tensor{}, false);
     LOG(ERROR) << "RecvFromRemoteAsync failed, detail " << s.error_message();
     return;
@@ -233,7 +234,7 @@ void SeastarRemoteRendezvous::RecvFromRemoteAsync(
     session()->worker_cache()->ReleaseWorker(call->src_worker_, call->wi_);
     call->done()(call->status(), Args(), Args(), Tensor(), false);
     call->wi_ = nullptr;
-    get_call_freelist()->Release(call, session()->worker_cache().get());
+    get_call_freelist()->Release(call, session()->worker_cache());
     return;
   }
 
@@ -248,7 +249,7 @@ void SeastarRemoteRendezvous::RecvFromRemoteAsync(
     session()->worker_cache()->ReleaseWorker(call->src_worker_, call->wi_);
     call->done()(s, Args(), call->recv_args(), call->tensor(), call->is_dead());
     call->wi_ = nullptr;
-    get_call_freelist()->Release(call, session()->worker_cache().get());
+    get_call_freelist()->Release(call, session()->worker_cache());
     Unref();
   });
 }

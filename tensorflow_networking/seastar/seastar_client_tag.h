@@ -5,10 +5,10 @@
 #include "tensorflow_networking/seastar/seastar_worker_service.h"
 #include "tensorflow_networking/seastar/seastar_worker_service_method.h"
 
-#include "tensorflow_networking/seastar/channel.hh"
-#include "tensorflow_networking/seastar/packet_queue.hh"
-
+#include "seastar/core/channel.hh"
+#include "seastar/core/packet_queue.hh"
 #include "seastar/core/temporary_buffer.hh"
+
 #include "tensorflow/core/distributed_runtime/call_options.h"
 #include "tensorflow/core/distributed_runtime/worker_cache.h"
 #include "tensorflow/core/distributed_runtime/worker_env.h"
